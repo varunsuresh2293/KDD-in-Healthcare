@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+            <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+            <link rel="stylesheet" type="text/css" href="css/texas.css">
+            <link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
+            <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+            <link href='https://fonts.googleapis.com/css?family=Quicksand:400,300' rel='stylesheet' type='text/css'>
+            <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+            <script type="text/javascript" src="js/notify.min.js"></script>
+            <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+            <script type="text/javascript" src="js/bootstrap.min.js"></script>
+            <script type="text/javascript" src="js/texas.js"></script>
+        </head>
+        <body>
+            <h1>
+                ASSISTED DIAGNOSIS INFORMATION SYSTEM
+            </h1>
+            <div class="row main_dock">
+                <div class="col-md-3 green_bg">
+                    <label>Support</label>
+                    <input type="text" id="support" class="form-control input-text green_bg" name="support" value="0.0">
+                    <br>
+                    <label>Confidence</label>
+                    <input type="text" id="confidence" class="form-control input-text green_bg" name="confidence" value="0.0">
+                    <br>
+                    <label>Lift</label>
+                    <input type="text" id="lift" class="form-control input-text green_bg" name="lift" value="0.0">
+                    <div id="btnLock" class="dark_grey_bg buttn row inner-shadow">
+                        <p>SET</p>
+                    </div>
+                </div>
+                <div class="col-md-4 white_bg">
+                    <fieldset>
+                        <legend>Demographics</legend>
+                            Age <input type="text" id="age" name="age">&nbsp;&nbsp;&nbsp;
+                            Sex 
+                        <select name="sex" id="sex">
+                            <option value=''>Select</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                        </select>&nbsp;&nbsp;&nbsp;
+                            Race <input type="number" id="race" name="race">
+                    </fieldset>
+                    <br><br>
+                    <label>Symptom&nbsp;&nbsp;&nbsp; <input type="text" id="symptom" placeholder="Enter Symptom code" name="symptom">
+                    </label>
+                    <p style="margin-left: 153px;">or</p>
+                    <select id="selSymtoms" style="margin-left:73px;">
+                        <option value=''>Select available Symptom</option>
+                    </select>
+                    <br><br>
+                    <button type="button" id="btnGetDiagnosis" disabled class="btn btn-default btn-sm" data-loading-text="Fetching..." style="font-weight:bold; margin-left: 31%">GET DIAGNOSIS</button>
+                </div>
+                <div class="col-md-4 transparent-bg result">
+                    <div class="row diagnosis-table">
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" tabindex="-1" role="dialog">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title"></h4>
+                  </div>
+                  <div class="modal-body">
+                      <div class="modalFilter">
+                          <fieldset>
+                            <legend>Demographics</legend>
+                                Age <input type="text" id="modalAge" name="age">&nbsp;&nbsp;&nbsp;
+                                Sex 
+                            <select name="sex" id="modalSex">
+                                <option value="">Select</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>&nbsp;&nbsp;&nbsp;
+                                Race <input type="number" id="modalRace" name="race">
+                              <button type="button" id="btnSetDemo" class="btn btn-default btn-sm" data-loading-text="Fetching...">Go</button>
+                        </fieldset>
+                      </div>
+                      <br><br>
+                      <br>
+                      <div class="row">
+                          <div class="col-md-6" id="avgLOS">
+                              <p>Nothing to show</p>
+                          </div>
+                          <div class="col-md-6" id="ds">
+                              <p>Nothing to show</p>
+                          </div>
+                      </div>
+                  </div>
+                </div><!-- /.modal-content -->
+              </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+        </body>
+    </html>
