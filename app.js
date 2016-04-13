@@ -1,9 +1,4 @@
-/*
-Akarsh Varadaraju - 1000988892
-Akshay Radhakrishna - 1000981007
-Gandharva Gowda - 1001115865
-Ranjith Marasingana - 1000969864
-*/
+/*Varun Suresh - 1001105294*/
 var http = require('http'); 
 var fs = require('fs');  
 var io = require('socket.io'); 
